@@ -14,13 +14,17 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}
+
+  host:
     - python
     - pip
     - cython
-    - numpy 1.11*
+    - numpy
   run:
     - python
-    - numpy >=1.11
+    # run_exports will take care of libnetcdf and hdf5
+    - {{ pin_compatible('numpy') }}
 
 test:
   source_files:
