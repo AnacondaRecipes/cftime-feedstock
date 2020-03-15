@@ -1,0 +1,29 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.9'
+c_compiler:
+- clang
+c_compiler_version:
+- '10'
+channel_sources:
+- conda-forge,defaults
+channel_targets:
+- conda-forge main
+macos_machine:
+- x86_64-apple-darwin13.4.0
+macos_min_version:
+- '10.9'
+numpy:
+- '1.14'
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+<<<<<<< HEAD:.ci_support/osx_numpy1.14python3.8.____cpython.yaml
+- 3.8.* *_cpython
+zip_keys:
+- - numpy
+  - python
+=======
+- 2.7.* *_cpython
+>>>>>>> MNT: Re-rendered with conda-build 3.19.0, conda-smithy 3.6.12, and conda-forge-pinning 2020.03.14:.ci_support/osx_python2.7.____cpython.yaml
