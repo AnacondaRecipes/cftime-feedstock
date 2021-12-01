@@ -20,6 +20,8 @@ requirements:
     - pip
     - cython
     - numpy
+    - setuptools >=41.2
+    - wheel
   run:
     - python
     - {{ pin_compatible('numpy') }}
@@ -39,6 +41,7 @@ test:
 about:
   home: https://github.com/Unidata/cftime
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: Time-handling functionality from netcdf4-python
 
