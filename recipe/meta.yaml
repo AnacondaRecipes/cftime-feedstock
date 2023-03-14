@@ -18,9 +18,9 @@ requirements:
   host:
     - python
     - pip
-    - cython
-    - numpy
-    - setuptools >=41.2
+    - cython 0.29.32
+    - numpy {{numpy}}
+    - setuptools
     - wheel
   run:
     - python
