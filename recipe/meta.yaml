@@ -35,7 +35,8 @@ test:
   imports:
     - cftime
   commands:
-    - pytest -vv test
+    # Re-enable this test in next release: https://github.com/Unidata/cftime/pull/294/files
+    - pytest -vv test -k "not test_num2date_precision"
     - pip check
 
 about:
