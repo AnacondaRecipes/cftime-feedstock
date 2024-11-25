@@ -19,13 +19,14 @@ requirements:
     - python
     - pip
     - cython >=0.29.20
-    - numpy >=2.0.0rc1,<3
+    - numpy 2.0         # [py<313]
+    - numpy {{ numpy }} # [py>=313]
     - setuptools >=41.2
     - wheel
   run:
     - python
-    - numpy >=1.13.3 # [py<312]
-    - numpy >=1.26 # [py>=312]
+    - numpy >=1.13.3,<3.0a0 # [py<312]
+    - numpy >=1.26,<3.0a0   # [py>=312]
 
 test:
   source_files:
