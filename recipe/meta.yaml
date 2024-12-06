@@ -1,4 +1,4 @@
-{% set version = "1.6.2" %}
+{% set version = "1.6.4" %}
 
 package:
   name: cftime
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/c/cftime/cftime-{{ version }}.tar.gz
-  sha256: 8614c00fb8a5046de304fdd86dbd224f99408185d7b245ac6628d0276596e6d2
+  sha256: e325406193758a7ed67308deb52e727782a19e384e183378e7ff62098be0aedc
 
 build:
-  number: 1
-  script: {{ PYTHON }} -m pip install . -vv --no-deps
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   build:
@@ -18,13 +18,15 @@ requirements:
   host:
     - python
     - pip
-    - cython 0.29
-    - numpy {{numpy}}
-    - setuptools
+    - cython >=0.29.20
+    - numpy 2.0         # [py<313]
+    - numpy {{ numpy }} # [py>=313]
+    - setuptools >=41.2
     - wheel
   run:
     - python
-    - {{ pin_compatible('numpy') }}
+    - numpy >=1.13.3,<3.0a0 # [py<312]
+    - numpy >=1.26,<3.0a0   # [py>=312]
 
 test:
   source_files:
@@ -35,8 +37,7 @@ test:
   imports:
     - cftime
   commands:
-    # Re-enable this test in next release: https://github.com/Unidata/cftime/pull/294/files
-    - pytest -vv test -k "not test_num2date_precision"
+    - pytest -vv test
     - pip check
 
 about:
