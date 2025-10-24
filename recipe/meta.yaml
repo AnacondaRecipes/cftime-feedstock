@@ -8,6 +8,8 @@ package:
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 8225fed6b9b43fb87683ebab52130450fc1730011150d3092096a90e54d1e81e
+  patches:
+    - patches/0001-changed-license-declaration-to-pep621-standard.patch  # [py>=313]
 
 build:
   number: 0
@@ -22,7 +24,9 @@ requirements:
     - python
     - pip
     - wheel
-    - setuptools >=77.0.1
+    - setuptools >=77.0.1  # [py<=312]
+    # numpy 2.1 for py313 works only with setuptools<74
+    - setuptools <74  # [py>=313]
     - cython >=0.29.20
     - numpy {{ numpy }}
   run:
