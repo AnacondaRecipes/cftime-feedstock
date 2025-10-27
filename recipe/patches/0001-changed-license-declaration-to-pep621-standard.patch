@@ -1,0 +1,26 @@
+From 2846c954303e88aea89482e43fa36d4f3062cc6f Mon Sep 17 00:00:00 2001
+From: Andrii Osipov <aosipov@anaconda.com>
+Date: Fri, 24 Oct 2025 01:15:00 -0700
+Subject: [PATCH] changed license declaration to pep621 standard
+
+---
+ pyproject.toml | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 0529898..b60a241 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -6,8 +6,7 @@ readme = "README.md"
+ authors = [
+     { name="Jeff Whitaker", email="whitaker.jeffrey@gmail.com"}
+ ]
+-license = "MIT"
+-license-files = ["LICENSE"]
++license = {text = "MIT"}
+ classifiers = [
+     'Development Status :: 5 - Production/Stable',
+     'Operating System :: MacOS :: MacOS X',
+-- 
+2.39.3 (Apple Git-146)
+
