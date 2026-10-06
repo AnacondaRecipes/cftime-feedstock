@@ -1,5 +1,5 @@
 {% set name = "cftime" %}
-{% set version = "1.6.5" %}
+{% set version = "1.6.6" %}
 
 package:
   name: {{ name }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8225fed6b9b43fb87683ebab52130450fc1730011150d3092096a90e54d1e81e
+  sha256: 7b2716b3dce97ba1740189c424ce97bd6f8e65391b7fe323c6f0f817f6a8ad56
   patches:
     - patches/0001-changed-license-declaration-to-pep621-standard.patch  # [py>=313]
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
-  skip: true  # [py<310]
+  skip: true  # [py<311]
 
 requirements:
   build:
@@ -23,15 +23,16 @@ requirements:
   host:
     - python
     - pip
-    - wheel
     - setuptools >=77.0.1  # [py<=312]
     # numpy 2.1 for py313 works only with setuptools<74
     - setuptools <74  # [py>=313]
     - cython >=0.29.20
     - numpy {{ numpy }}
+    - numpy >=2.0.0,<3
   run:
     - python
     - numpy >=1.21.2
+    - {{ pin_compatible('numpy') }}
 
 test:
   source_files:
